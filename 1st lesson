@@ -1,0 +1,68 @@
+ #include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+
+
+int main(int argc, char *argv[]) {
+	float random;					/*Dhlwsh metavlhths sthn opoia tha eisxwrhsoume tis random times*/
+	int z;							/*Dhlwsh metavlhths pou tha xrhsimopoihsoume se loop*/
+	int table[10];					/*Dhlwsh pinaka ston opoio tha ekxwrhsoume thn suxnothta emfanishs twn timwn mas*/
+	for (z=0;z<10;z++){             /*Mhdenismos periexomenou pinaka me xrhsh for loop*/
+		table[z]=0;					
+	}
+	int i;							/*Dhlwsh metavlhtwn pou tha xrhsimopoihsoume se loop*/
+	int j;					
+	srand((unsigned)time(NULL));	/*Xrhsh srand me thn timh "time" gia thn paragwgh diaforetikwn apotelesmatwn (xwris authn mporei na paraxthoun idies times se kathe loop)*/
+	for (i=0;i<100;i++){			/*Xrhsh for loop gia thn paragwgh twn 100 arithmwn*/
+		random=(float) rand() /RAND_MAX;	/*Dhmiourgia random arithmou kai ekxwrhsh tou sthn metavlhth random*/
+		if (random<=0.1){			/*Xrhsh if gia thn katametrhsh emfanisewn arithmwn kai topothethsh tou arithmou emfanisewn ston pinaka table*/
+			table[0]=table[0]+1;
+		}
+		else if (random<=0.2){
+			table[1]=table[1]+1;
+		}
+		else if (random<=0.3){
+			table[2]=table[2]+1;
+		}
+		else if (random<=0.4){
+			table[3]=table[3]+1;
+		}
+		else if (random<=0.5){
+			table[4]=table[4]+1;
+		}
+		else if (random<=0.6){
+			table[5]=table[5]+1;
+		}
+		else if (random<=0.7){
+			table[6]=table[6]+1;
+		}
+		else if (random<=0.8){
+			table[7]=table[7]+1;
+		}
+		else if (random<=0.9){
+			table[8]=table[8]+1;
+		}
+		else{
+			table[9]=table[9]+1;
+		}
+	}
+	for (j=0;j<10;j++){
+		printf("Cell %d contains %d random numbers\n",j,table[j]);		/*Emfanish pinaka apotelesmatwn*/
+	}
+	
+	FILE * fp;			/*Dhmiourgia arxeiou gia thn topothethsh tou apotelesmatos*/
+
+    fp = fopen ("data.txt", "w+");			/*anoigma arxeiou-onomasia kai tupos arxeiou-dikaiwmata se arxeio*/
+    fprintf(fp,"0.0-0.1 , %d\n", table[0]);			/*Import apotelesmatwn sto arxeio me tropo pou tha eunohsei thn dhmiourgia grafhmatos*/
+    fprintf(fp,"0.1-0.2 , %d\n", table[1]);
+    fprintf(fp,"0.2-0.3 , %d\n", table[2]);
+    fprintf(fp,"0.3-0.4 , %d\n", table[3]);
+    fprintf(fp,"0.4-0.5 , %d\n", table[4]);
+    fprintf(fp,"0.5-0.6 , %d\n", table[5]);
+    fprintf(fp,"0.6-0.7 , %d\n", table[6]);
+    fprintf(fp,"0.7-0.8 , %d\n", table[7]);
+    fprintf(fp,"0.8-0.9 , %d\n", table[8]);
+    fprintf(fp,"0.9-1.0 , %d\n", table[9]);
+    fclose(fp);				/*Kleisimo arxeiou*/
+	return 0;
+}
